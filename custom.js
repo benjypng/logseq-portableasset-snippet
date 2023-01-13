@@ -20,11 +20,13 @@ const observer = new top.MutationObserver((mutationsList) => {
           const { type, name } = file;
 
           if (type.startsWith("video")) {
-            logseq.api.update_block(uuid, `![video](../assets/${name})`);
+            logseq.api.update_block(uuid, `![📹 ${name}](../assets/${name})`);
           } else if (type.startsWith("audio")) {
-            logseq.api.update_block(uuid, `![audio](../assets/${name})`);
+            logseq.api.update_block(uuid, `![🎧 ${name}](../assets/${name})`);
+          } else if (type.startsWith("image")) {
+            logseq.api.update_block(uuid, `![🖼 ${name}](../assets/${name})`);
           } else {
-            logseq.api.update_block(uuid, `![](../assets/${name})`);
+            logseq.api.update_block(uuid, `![📄 ${name}](../assets/${name})`);
           }
         };
         btn.addEventListener("click", () => {
